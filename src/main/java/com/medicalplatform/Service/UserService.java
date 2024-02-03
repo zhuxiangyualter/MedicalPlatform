@@ -5,5 +5,5 @@ package com.medicalplatform.Service;
  * @verion 2.6.5
  * @Session Study
  */
-public interface DoctorService {
+public interface UserService {
 }
