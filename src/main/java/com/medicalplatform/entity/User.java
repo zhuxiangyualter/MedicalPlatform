@@ -12,10 +12,12 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userid;
+    private Integer userid;
     @Column(nullable = false, unique = true)
-    private String username;
+    private String name;
 
+    @Column(nullable = false, unique = true)
+    private String password;
     @Column(nullable = false)
     private String hashedPassword;
 

@@ -1,0 +1,23 @@
+# Spring Boot 开发配置
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+#  data:
+#    mysql:
+#      uri: mongodb://root:root@127.0.0.1/db_qfnu_ims
+#  #      uri: mongodb://localhost:3306/db
+#  thymeleaf:
+#    cache: false
+
+# 项目配置 配置上传和导出目录
+sims:
+  export-dir: /home/admin/qfnu/export/
+  upload-dir: /home/admin/qfnu/upload/
+  domain-name: http://127.0.0.1
+  auth:
+    cache-expire-time: 3000
+    session-expire-time: 3000
+
+#server:
+#  port: 8080

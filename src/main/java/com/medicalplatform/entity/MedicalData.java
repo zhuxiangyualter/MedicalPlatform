@@ -35,6 +35,7 @@ public class MedicalData {
     @Column(name = "upload_time", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp uploadTime;
 
+
     // Getters and setters
 
 }

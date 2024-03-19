@@ -1,11 +1,15 @@
 package com.medicalplatform.repository;
 
 import com.medicalplatform.entity.User;
+import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.Predicate;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.FluentQuery;
 
 import java.util.List;
@@ -17,149 +21,50 @@ import java.util.function.Function;
  * @verion 2.6.5
  * @Session Study
  */
-public class UserRepository implements JpaRepository<User, Long> {
-    @Override
-    public List<User> findAll() {
-        return null;
-    }
+public class UserRepository implements QuerydslPredicateExecutor<T> {
 
     @Override
-    public List<User> findAll(Sort sort) {
-        return null;
-    }
-
-    @Override
-    public Page<User> findAll(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public List<User> findAllById(Iterable<Long> longs) {
-        return null;
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Long aLong) {
-
-    }
-
-    @Override
-    public void delete(User entity) {
-
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends User> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public <S extends User> S save(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends User> List<S> saveAll(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public Optional<User> findById(Long aLong) {
+    public Optional<T> findOne(Predicate predicate) {
         return Optional.empty();
     }
 
     @Override
-    public boolean existsById(Long aLong) {
-        return false;
-    }
-
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public <S extends User> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public Iterable<T> findAll(Predicate predicate) {
         return null;
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<User> entities) {
-
-    }
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public User getOne(Long aLong) {
+    public Iterable<T> findAll(Predicate predicate, Sort sort) {
         return null;
     }
 
     @Override
-    public User getById(Long aLong) {
+    public Iterable<T> findAll(Predicate predicate, OrderSpecifier<?>... orders) {
         return null;
     }
 
     @Override
-    public <S extends User> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-
-    @Override
-    public <S extends User> List<S> findAll(Example<S> example) {
+    public Iterable<T> findAll(OrderSpecifier<?>... orders) {
         return null;
     }
 
     @Override
-    public <S extends User> List<S> findAll(Example<S> example, Sort sort) {
+    public Page<T> findAll(Predicate predicate, Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends User> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends User> long count(Example<S> example) {
+    public long count(Predicate predicate) {
         return 0;
     }
 
     @Override
-    public <S extends User> boolean exists(Example<S> example) {
+    public boolean exists(Predicate predicate) {
         return false;
     }
 
     @Override
-    public <S extends User, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        return null;
-    }
-
-    @Override
-    public <S extends User> S saveAndFlush(S entity) {
+    public <S extends T, R> R findBy(Predicate predicate, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
 }
