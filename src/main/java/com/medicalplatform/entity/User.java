@@ -1,5 +1,9 @@
 package com.medicalplatform.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 /**
@@ -8,8 +12,11 @@ import javax.persistence.*;
  * @Session Study
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user")
-public class User {
+public class User implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userid;

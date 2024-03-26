@@ -3,6 +3,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/medicalplatform?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: root
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 #  data:
 #    mysql:
 #      uri: mongodb://root:root@127.0.0.1/db_qfnu_ims
@@ -21,3 +32,7 @@ sims:
 
 #server:
 #  port: 8080
+server:
+  port: 8080
+shiro:
+  loginUrl: /UserController/login

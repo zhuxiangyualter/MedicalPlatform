@@ -16,7 +16,7 @@ import java.util.Locale;
 
 @Entity
 @Table(name = "medical_data")
-public class MedicalData {
+public class MedicalData implements java.io.Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

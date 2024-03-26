@@ -1,24 +1,35 @@
 package com.medicalplatform.Shiro;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
+import org.apache.shiro.spring.LifecycleBeanPostProcessor;
+import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.spring.LifecycleBeanPostProcessor;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
-import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 
-/**
- * @author 渚相玉
- * @verion 2.6.5
- * @Session Study
- */
 @Configuration
 public class ShiroConfig {
+
+    @Bean
+    public DefaultWebSecurityManager defaultWebSecurityManager(UserRealm userRealm) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+        matcher.setHashAlgorithmName("md5");
+        matcher.setHashIterations(3);
+        userRealm.setCredentialsMatcher(matcher);
+        securityManager.setRealm(userRealm);
+        SecurityUtils.setSecurityManager(securityManager);
+        return securityManager;
+    }
+
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -37,15 +48,17 @@ public class ShiroConfig {
     }
 
     @Bean
-    public SecurityManager securityManager(Realm realm) {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(realm);
-        return securityManager;
+    public Map<String,Realm> realms() {
+        Map<String, Realm> realms = new LinkedHashMap<>();
+        realms.put("userRealm", userRealm());
+        //  realms.put("adminRealm", new AdminRealm());
+        // Add any additional realms if needed
+        return realms;
     }
 
     @Bean
-    public CustomerRealm realm() {
-        return new CustomerRealm(); // 您需要实现自定义的 Realm 类
+    public UserRealm userRealm() {
+        return new UserRealm();
     }
 
     @Bean
@@ -59,5 +72,4 @@ public class ShiroConfig {
         advisor.setSecurityManager(securityManager);
         return advisor;
     }
-
 }

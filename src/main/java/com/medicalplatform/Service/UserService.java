@@ -4,6 +4,7 @@ import com.medicalplatform.Service.Basic.BasicService;
 import com.medicalplatform.Service.Basic.ExportService;
 import com.medicalplatform.Service.Basic.ImportableService;
 import com.medicalplatform.entity.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
